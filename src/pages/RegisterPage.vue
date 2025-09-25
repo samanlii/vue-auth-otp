@@ -24,11 +24,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 
 const phone = ref('')
 const authStore = useAuthStore()
 const errorMessage = ref('')
+const router = useRouter()
 
 function iranValidPhone(num) {
   if (!num) return false
@@ -46,5 +48,7 @@ function register() {
 
   authStore.setPhone(phone.value)
   authStore.setOtp(otp)
+
+  router.push('/verify')
 }
 </script>
