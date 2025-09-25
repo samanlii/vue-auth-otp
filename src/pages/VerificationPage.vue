@@ -2,6 +2,9 @@
   <q-page class="flex flex-center q-pa-md">
     <q-form v-model="modelValue" @submit.prevent="verifyOtp">
       <div class="q-pa-xl column items-center shadow-6 border">
+        <div class="text-subtitle1 q-mb-md">
+          کد ارسال شده به {{ authStore.phone }} را وارد کنید.
+        </div>
         <q-input v-model="otpCode" label="کد را وارد کنید" maxlength="5" outlined />
         <q-btn
           type="submit"
@@ -10,6 +13,9 @@
           padding="xs lg"
           class="full-width q-ma-md"
         />
+        <div v-if="errorMessage" class="text-negative q-mt-sm">
+          {{ errorMessage }}
+        </div>
       </div>
     </q-form>
   </q-page>
@@ -17,17 +23,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useAuthStore } from '../stores/auth'
 
 const modelValue = defineModel()
 const otpCode = ref('')
+const errorMessage = ref('')
+const authStore = useAuthStore()
 
 function verifyOtp() {
-  if (otpCode.value.length !== 5) {
-    alert('کد باید ۵ رقمی باشد')
+  if (otpCode.value !== String(authStore.otp)) {
+    errorMessage.value = 'کد اشتباه است'
     return
   }
 
-  console.log('کد وارد شده:', otpCode.value)
-  alert('کد تایید شد')
+  errorMessage.value = ''
+  alert('ورود موفقیت‌آمیز ✅')
 }
 </script>
