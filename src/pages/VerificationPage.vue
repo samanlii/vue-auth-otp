@@ -15,9 +15,7 @@
             class="otp-box"
           />
         </div>
-        <div v-if="errorMessage" class="text-negative q-mt-sm">
-          {{ errorMessage }}
-        </div>
+
         <q-btn
           type="submit"
           label="تایید"
@@ -25,6 +23,9 @@
           padding="xs lg"
           class="full-width q-ma-md"
         />
+        <div v-if="errorMessage" class="text-negative q-mt-sm">
+          {{ errorMessage }}
+        </div>
       </div>
     </q-form>
   </q-page>
@@ -49,13 +50,14 @@ function focusNext(index, event) {
 }
 
 function verifyOtp() {
-  if (otp.value !== String(authStore.otp)) {
+  const entered = otp.value.join('')
+  const stored = String(authStore.otp)
+  if (entered === stored) {
+    errorMessage.value = ''
+    alert('ورود موفقیت‌آمیز ✅')
+  } else {
     errorMessage.value = 'کد اشتباه است'
-    return
   }
-
-  errorMessage.value = ''
-  alert('ورود موفقیت‌آمیز ✅')
 }
 </script>
 
