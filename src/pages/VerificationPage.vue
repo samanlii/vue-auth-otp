@@ -1,33 +1,39 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
-    <q-form @submit.prevent="verifyOtp">
-      <div class="q-pa-xl column items-center shadow-6 border">
-        <div class="q-mb-md">کد ارسال شده به {{ authStore.phone }} را وارد کنید</div>
-        <div class="row q-gutter-sm">
-          <q-input
-            v-for="(digit, index) in 5"
-            :key="index"
-            ref="inputs"
-            v-model="otp[index]"
-            maxlength="1"
-            @keyup="focusNext(index, $event)"
-            outlined
-            class="otp-box"
-          />
-        </div>
+    <div class="row justify-center q-gutter-md">
+      <q-card class="q-pa-lg q-col-12 q-col-md-6 q-col-lg-4 shadow-6">
+        <q-form @submit.prevent="verifyOtp">
+          <div class="q-pa-xl column items-center border">
+            <div class="text-center q-mb-md text-h6">
+              کد ارسال شده به {{ authStore.phone }} را وارد کنید
+            </div>
+            <div class="row q-gutter-sm justify-center otp-row">
+              <q-input
+                v-for="(digit, index) in 5"
+                :key="index"
+                ref="inputs"
+                v-model="otp[index]"
+                maxlength="1"
+                @keyup="focusNext(index, $event)"
+                outlined
+                class="otp-box"
+              />
+            </div>
 
-        <q-btn
-          type="submit"
-          label="تایید"
-          color="primary"
-          padding="xs lg"
-          class="full-width q-ma-md"
-        />
-        <div v-if="errorMessage" class="text-negative q-mt-sm">
-          {{ errorMessage }}
-        </div>
-      </div>
-    </q-form>
+            <q-btn
+              type="submit"
+              label="تایید"
+              color="primary"
+              padding="xs lg"
+              class="full-width q-ma-md"
+            />
+            <div v-if="errorMessage" class="text-negative q-mt-sm">
+              {{ errorMessage }}
+            </div>
+          </div>
+        </q-form>
+      </q-card>
+    </div>
   </q-page>
 </template>
 
@@ -62,9 +68,15 @@ function verifyOtp() {
 </script>
 
 <style scoped>
+.otp-row {
+  flex-wrap: nowrap;
+  margin-bottom: 20px;
+}
 .otp-box {
-  width: 50px;
+  width: 40px;
+  height: 50px;
   text-align: center;
   font-size: 20px;
+  min-width: 40px;
 }
 </style>

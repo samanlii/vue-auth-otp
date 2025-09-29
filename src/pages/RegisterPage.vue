@@ -1,24 +1,28 @@
 <template>
   <q-page class="flex flex-center q-pa-md">
-    <q-form @submit.prevent="register">
-      <div class="q-pa-xl column items-center shadow-6 border">
-        <q-input
-          prefix="+98"
-          outlined
-          v-model="phone"
-          label="شماره تماس"
-          :error="!!errorMessage"
-          :error-message="errorMessage"
-        />
-        <q-btn
-          type="submit"
-          label="دریافت کد"
-          color="primary"
-          padding="xs lg"
-          class="full-width q-ma-md"
-        />
-      </div>
-    </q-form>
+    <div class="row justify-center q-gutter-md">
+      <q-card class="q-pa-lg q-col-12 q-col-md-6 q-col-lg-4 shadow-6">
+        <div class="text-center text-h6 q-mb-md">ثبت‌ نام</div>
+        <q-form @submit.prevent="register">
+          <div class="q-pa-xl column items-center">
+            <q-input
+              prefix="+98"
+              outlined
+              v-model="phone"
+              label="شماره تماس"
+              :error="!!errorMessage"
+              :error-message="errorMessage"
+            />
+            <q-btn
+              type="submit"
+              label="دریافت کد"
+              color="primary"
+              padding="xs lg"
+              class="full-width q-ma-md"
+            />
+          </div> </q-form
+      ></q-card>
+    </div>
   </q-page>
 </template>
 
