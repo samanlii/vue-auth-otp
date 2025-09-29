@@ -16,7 +16,7 @@
             <q-btn
               type="submit"
               label="دریافت کد"
-              color="primary"
+              color="grey-9"
               padding="xs lg"
               class="full-width q-ma-md"
             />

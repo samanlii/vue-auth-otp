@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="lHh Lpr lFf" class="bg-grey-9">
+    <q-header elevated class="bg-dark">
       <q-toolbar>
-        <q-toolbar-title>Vue OTP Auth</q-toolbar-title>
+        <q-toolbar-title class="text-center">Vue OTP Auth</q-toolbar-title>
       </q-toolbar>
     </q-header>
 

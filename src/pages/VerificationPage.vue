@@ -23,7 +23,7 @@
             <q-btn
               type="submit"
               label="تایید"
-              color="primary"
+              color="grey-9"
               padding="xs lg"
               class="full-width q-ma-md"
             />
